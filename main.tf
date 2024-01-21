@@ -3,6 +3,8 @@ module "alb-public"{
   source                = "./vendor/modules/alb"
   
   ENV                   = var.ENV
+  INTERNAL              = false
+  ALB_NAME              = "roboshop-public"
 }
 
 module "alb-private"{
@@ -10,7 +12,10 @@ module "alb-private"{
   source                = "./vendor/modules/alb"
   
   ENV                   = var.ENV
+  INTERNAL              = true
+  ALB_NAME              = "roboshop-private"
 }
+
 
 # We cannot parameterize anything that's added in the source
 # To limit that, we can use a tool called as Terrafile. All it does is that it clones the remote code from the specified branch and make it locally available.
